@@ -39,7 +39,9 @@ variable "backup_retention_days" {
 
 variable "create_mode" {
   type        = string
-  default     = Update
+  default = {
+  mode = "Update"
+  }
   description = "(Optional) The creation mode which can be used to restore or replicate existing servers. Possible values are `Default`, `GeoRestore`, `PointInTimeRestore`, `Replica` and `Update`."
 }
 
