@@ -21,6 +21,13 @@ resource "azurerm_postgresql_flexible_server" "this" {
   version                           = var.server_version
   zone                              = var.zone
 
+  lifecycle {
+    ignore_changes = [
+      zone,
+      high_availability["standby_availability_zone"],
+    ]
+  }
+
   dynamic "authentication" {
     for_each = var.authentication == null ? [] : [var.authentication]
 
